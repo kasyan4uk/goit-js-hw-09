@@ -8,7 +8,6 @@ const refs = {
   amount: document.querySelector('[name="amount"]'),
 }
 
-refs.body.style.backgroundColor = '#f7eff4';
 refs.form.addEventListener('click', onPromiseCreate);
 
 function createPromise(position, delay) {
@@ -32,8 +31,7 @@ function onPromiseCreate(e) {
   let amount = Number(refs.amount.value);
 
   for (let i = 1; i <= amount; i += 1) {
-    let promiseDelay = valueDelay + step * i;
-
+    let promiseDelay = valueDelay + (i - 1) * step;
     createPromise(i, promiseDelay)
       .then(({ position, delay }) => {
         Notify.success(`✅ Fulfilled promise ${position} in ${delay}ms`);
